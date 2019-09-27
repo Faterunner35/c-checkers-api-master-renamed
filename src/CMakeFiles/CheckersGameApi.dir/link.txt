@@ -1,0 +1,2 @@
+/usr/bin/ar qc libCheckersGameApi.a  CMakeFiles/CheckersGameApi.dir/CheckersGameApi.cpp.o CMakeFiles/CheckersGameApi.dir/TreeBoard.cpp.o
+/usr/bin/ranlib libCheckersGameApi.a

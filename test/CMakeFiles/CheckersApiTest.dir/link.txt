@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/CheckersApiTest.dir/CheckersApiTest.cpp.o  -o CheckersApiTest -Wl,-Bstatic -lgtest -Wl,-Bdynamic -lpthread ../src/libCheckersGameApi.a ../src/libCheckersGameLib.a 

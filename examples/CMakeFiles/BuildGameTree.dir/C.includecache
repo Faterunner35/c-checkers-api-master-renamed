@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/szbaijie/workspace/c-checkers-api-master/examples/BuildGameTree.c
+stdio.h
+-
+stdlib.h
+-
+CheckersGameApi.h
+-
+
+src/Checker.h
+
+src/CheckersGameApi.h
+stdio.h
+-
+stdlib.h
+-
+stdbool.h
+-
+TreeBoard.h
+src/TreeBoard.h
+Player.h
+src/Player.h
+Checker.h
+src/Checker.h
+
+src/TreeBoard.h
+set
+-
+
+src/Player.h
+

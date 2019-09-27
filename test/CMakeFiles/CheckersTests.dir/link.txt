@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/CheckersTests.dir/CheckersTest.cpp.o  -o CheckersTests -Wl,-Bstatic -lgtest -Wl,-Bdynamic -lpthread ../src/libCheckersGameLib.a 

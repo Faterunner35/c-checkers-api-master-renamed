@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/BuildGameTree.dir/BuildGameTree.cpp.o  -o BuildGameTree ../src/libCheckersGameApi.a ../src/libCheckersGameLib.a 
