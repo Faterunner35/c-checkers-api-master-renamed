@@ -1,54 +1,64 @@
-# Prerequisites
+# ---------------------------------------------------------------------------
+# CMake build output
+# Build out of source, e.g. `cmake -B build`. Everything below is generated.
+# ---------------------------------------------------------------------------
+build/
+build-*/
+cmake-build-*/
+out/
+_deps/
+Testing/
+CMakeFiles/
+CMakeCache.txt
+CMakeUserPresets.json
+cmake_install.cmake
+CTestTestfile.cmake
+DartConfiguration.tcl
+install_manifest.txt
+compile_commands.json
+Makefile
+
+# Executables produced by an accidental in-source build
+/examples/BuildGameTree
+/test/CheckersTests
+/test/CheckersApiTest
+
+# ---------------------------------------------------------------------------
+# Compiler / linker artefacts
+# ---------------------------------------------------------------------------
 *.d
-
-# Object files
 *.o
-*.ko
 *.obj
-*.elf
-
-# Linker output
-*.ilk
-*.map
-*.exp
-
-# Precompiled Headers
 *.gch
 *.pch
-
-# Libraries
-*.lib
 *.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
+*.lib
 *.so
 *.so.*
 *.dylib
-
-# Executables
+*.dll
 *.exe
 *.out
 *.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
+*.ilk
+*.map
+*.exp
 *.pdb
+*.idb
+*.dSYM/
 
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
-build
+# ---------------------------------------------------------------------------
+# IDEs and editors
+# ---------------------------------------------------------------------------
 .vscode/
+.vs/
+.idea/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.user
+*.suo
+*.swp
+*~
+.DS_Store
