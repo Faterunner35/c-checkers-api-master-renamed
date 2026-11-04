@@ -18,6 +18,7 @@ MoveTree createMoveTree()
     MoveTreeNode *node = new MoveTreeNode;
 
     memset(&node->MoveStep, 0, sizeof(MoveStep));
+    node->parent = NULL;
 
     return (MoveTree)node;
 }
