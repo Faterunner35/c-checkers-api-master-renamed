@@ -138,8 +138,9 @@ bool checkValidOfMoving(const char initialBoardStatus[8][8],
     if (!checkCoordinate(posStart) ||
         !checkCoordinate(finalPos) ||
         getPieceFromPos(initialBoardStatus, posStart) == BLACK_EMPTY_FIELD ||
-        isBlackPiece(getPieceFromPos(initialBoardStatus, posStart)) ==
-            isBlackPiece(getPieceFromPos(initialBoardStatus, finalPos)))
+        (getPieceFromPos(initialBoardStatus, finalPos) != BLACK_EMPTY_FIELD &&
+         isBlackPiece(getPieceFromPos(initialBoardStatus, posStart)) ==
+            isBlackPiece(getPieceFromPos(initialBoardStatus, finalPos))))
     {
         return false;
     }

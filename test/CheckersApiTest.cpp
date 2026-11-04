@@ -2,6 +2,7 @@
 #include <CheckersGameApi.h>
 #include <TreeBoard.h>
 #include <gtest/gtest.h>
+#include <string.h>
 
 static bool compareBoards(const char board1[8][8], const char board2[8][8])
 {
@@ -142,6 +143,49 @@ TEST(CHECK, BUILD_GAME)
         ASSERT_EQ(7, nextCount);
         freeGameTree(treeBoard);
     }
+}
+
+// Regression: simple moves of a white piece must be accepted
+// (an empty target square used to be treated as a white piece).
+TEST(CHECK, WHITE_SIMPLE_MOVE)
+{
+    char status[8][8];
+    initializeBoardStatus(status);
+
+    int posStart[2] = {2, 0};
+    int finalPos[2] = {3, 1};
+    ASSERT_EQ(true, checkValidOfMoving(status, posStart, finalPos, makePossibleMovesForPiece));
+
+    int occupied[2] = {1, 1};
+    ASSERT_EQ(false, checkValidOfMoving(status, posStart, occupied, makePossibleMovesForPiece));
+}
+
+// Regression: a white king making a simple move must stay a white king
+// (it used to turn into a black king).
+TEST(BUILD_BOARD, WHITE_KING_SIMPLE_MOVE)
+{
+    char status[8][8] = {
+        //0    1    2    3    4    5    6    7
+        {'#', ' ', '#', ' ', '#', ' ', '#', ' '},  //0
+        {' ', '#', ' ', '#', ' ', '#', ' ', '#'},  //1
+        {'#', ' ', '#', ' ', '#', ' ', '#', ' '},  //2
+        {' ', '#', ' ', '2', ' ', '#', ' ', '#'},  //3
+        {'#', ' ', '#', ' ', '#', ' ', '#', ' '},  //4
+        {' ', '#', ' ', '#', ' ', '#', ' ', '#'},  //5
+        {'#', ' ', '#', ' ', '#', ' ', '#', ' '},  //6
+        {' ', '#', ' ', '#', ' ', '#', ' ', '3'}}; //7
+
+    char afterMove[8][8];
+    memcpy(afterMove, status, sizeof(afterMove));
+    afterMove[3][3] = '#';
+    afterMove[4][4] = '2';
+
+    int position[2] = {3, 3};
+    BoardList *boardList = makePossibleMovesForPiece(status, position);
+    ASSERT_EQ(true, boardList != NULL);
+    ASSERT_EQ(12, getLengthOfBoard(boardList));
+    ASSERT_EQ(true, compareListBoardWithRaw(boardList, afterMove));
+    freeBoardList(boardList);
 }
 
 int main(int argc, char **argv) {
