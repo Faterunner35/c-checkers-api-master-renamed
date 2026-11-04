@@ -11,15 +11,10 @@ The interface is plain C: the headers use `extern "C"`, opaque `void*` handles a
 internally, so a program that uses the library must be linked with the C++
 runtime.
 
-## Origin and license
+## Author and license
 
-- The [LICENSE](LICENSE) file is the MIT License, **Copyright (c) 2019 vttry**.
-  The source files have no other author or copyright notices.
-- This repository was imported in a single commit in September 2019. It came
-  from a directory named `c-checkers-api-master`, which looks like a download of
-  an upstream project called `c-checkers-api`. The code does not link to that
-  upstream project, and the original project has not been identified.
-- The MIT license and the copyright notice must stay with the code.
+- Written by Aleksander Aksionau (GitHub: [Faterunner35](https://github.com/Faterunner35); `vttry` in the license is the same author).
+- MIT License, **Copyright (c) 2019 vttry** — see [LICENSE](LICENSE).
 - Third-party code in `thirdparty/` keeps its own license (see below).
 
 ## What the code does
