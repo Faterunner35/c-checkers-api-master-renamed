@@ -18,6 +18,7 @@ MoveTree createMoveTree()
     MoveTreeNode *node = new MoveTreeNode;
 
     memset(&node->MoveStep, 0, sizeof(MoveStep));
+    node->parent = NULL;
 
     return (MoveTree)node;
 }
@@ -690,7 +691,7 @@ void buildNotJumpTreeForKingPiece(const char status[8][8], MoveTreeNode *rootNod
             //alloc memory for new node and set current Data
             MoveTreeNode *currentMoveTreeList = new MoveTreeNode;
             copyPosition(currentMoveTreeList->MoveStep.finalPos, currentOffsetPosition);
-            currentMoveTreeList->MoveStep.finalStatus = BLACK_KING;
+            currentMoveTreeList->MoveStep.finalStatus = rootNode->MoveStep.finalStatus;
             currentMoveTreeList->MoveStep.isJump = false;
 			currentMoveTreeList->parent = NULL;
             
@@ -715,7 +716,7 @@ void buildNotJumpTreeForKingPiece(const char status[8][8], MoveTreeNode *rootNod
             //alloc memory for new node and set current Data
             MoveTreeNode *currentMoveTreeList = new MoveTreeNode;
             copyPosition(currentMoveTreeList->MoveStep.finalPos, currentOffsetPosition);
-            currentMoveTreeList->MoveStep.finalStatus = BLACK_KING;
+            currentMoveTreeList->MoveStep.finalStatus = rootNode->MoveStep.finalStatus;
             currentMoveTreeList->MoveStep.isJump = false;
 			currentMoveTreeList->parent = NULL;
             
@@ -740,7 +741,7 @@ void buildNotJumpTreeForKingPiece(const char status[8][8], MoveTreeNode *rootNod
             //alloc memory for new node and set current Data
             MoveTreeNode *currentMoveTreeList = new MoveTreeNode;
             copyPosition(currentMoveTreeList->MoveStep.finalPos, currentOffsetPosition);
-            currentMoveTreeList->MoveStep.finalStatus = BLACK_KING;
+            currentMoveTreeList->MoveStep.finalStatus = rootNode->MoveStep.finalStatus;
             currentMoveTreeList->MoveStep.isJump = false;
 			currentMoveTreeList->parent = NULL;
             
@@ -764,7 +765,7 @@ void buildNotJumpTreeForKingPiece(const char status[8][8], MoveTreeNode *rootNod
             //alloc memory for new node and set current Data
             MoveTreeNode *currentMoveTreeList = new MoveTreeNode;
             copyPosition(currentMoveTreeList->MoveStep.finalPos, currentOffsetPosition);
-            currentMoveTreeList->MoveStep.finalStatus = BLACK_KING;
+            currentMoveTreeList->MoveStep.finalStatus = rootNode->MoveStep.finalStatus;
             currentMoveTreeList->MoveStep.isJump = false;
 			currentMoveTreeList->parent = NULL;
             

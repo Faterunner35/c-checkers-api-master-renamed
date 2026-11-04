@@ -9,9 +9,6 @@ void freeBoardList(BoardList *boardList)
         return;
 
     list_board *listItems = (list_board *)boardList->content;
-    if( listItems == NULL )
-        return;
-    
     delete listItems;
     delete boardList;
 }
@@ -141,8 +138,9 @@ bool checkValidOfMoving(const char initialBoardStatus[8][8],
     if (!checkCoordinate(posStart) ||
         !checkCoordinate(finalPos) ||
         getPieceFromPos(initialBoardStatus, posStart) == BLACK_EMPTY_FIELD ||
-        isBlackPiece(getPieceFromPos(initialBoardStatus, posStart)) ==
-            isBlackPiece(getPieceFromPos(initialBoardStatus, finalPos)))
+        (getPieceFromPos(initialBoardStatus, finalPos) != BLACK_EMPTY_FIELD &&
+         isBlackPiece(getPieceFromPos(initialBoardStatus, posStart)) ==
+            isBlackPiece(getPieceFromPos(initialBoardStatus, finalPos))))
     {
         return false;
     }
@@ -168,9 +166,10 @@ bool checkValidOfMoving(const char initialBoardStatus[8][8],
         {
             isFound = true;
         }
-        //free allocated memory
-        //free(currentItem);
     }
+
+    //free allocated memory
+    freeBoardList(boardList);
 
     return isFound;
 }
@@ -341,6 +340,9 @@ static void buildGameTreeNode(const int currentdepthOfMuves,
                                 newTreeNode);
             }
         }
+
+        //the boards were copied into the tree nodes, free the list itself
+        freeBoardList(boardList);
     }
 }
 
