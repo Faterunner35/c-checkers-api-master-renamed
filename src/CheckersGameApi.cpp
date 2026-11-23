@@ -48,19 +48,19 @@ void concatBoardList(BoardList *&boardList1, BoardList *&boardList2)
     if( boardList2 == NULL )
         return;
 
-	list_board *list2 = (list_board *)boardList2->content;
-	if (list2 == NULL)
-		return;
+    list_board *list2 = (list_board *)boardList2->content;
+    if (list2 == NULL)
+        return;
 
-	if (boardList1 == NULL)
-	{
-		boardList1 = new BoardList();
-		boardList1->content = new list_board;
-	}
+    if (boardList1 == NULL)
+    {
+        boardList1 = new BoardList();
+        boardList1->content = new list_board;
+    }
 
-	list_board *list1 = (list_board *)boardList1->content;
-	if (list1 == NULL)
-		return;
+    list_board *list1 = (list_board *)boardList1->content;
+    if (list1 == NULL)
+        return;
 
     list1->splice(std::end(*list1), *list2);
 }

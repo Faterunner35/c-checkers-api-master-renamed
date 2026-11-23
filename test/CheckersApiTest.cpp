@@ -1,4 +1,3 @@
-#define CATCH_CONFIG_MAIN
 #include <CheckersGameApi.h>
 #include <TreeBoard.h>
 #include <gtest/gtest.h>
@@ -57,7 +56,6 @@ TEST(BUILD_BOARD, CHECK)
     BoardList *boardList = makePossibleMovesForPiece(status, position);
 
     ASSERT_EQ(true, boardList != NULL);
-    BoardList *currentItem = NULL;
     int count = getLengthOfBoard(boardList);
 
     ASSERT_EQ(1, count);

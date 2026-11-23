@@ -26,14 +26,14 @@ include(GoogleTest)
 
 # The test program
 add_executable(CheckersTests CheckersTest.cpp)
-# target_link_libraries(CheckersTests PRIVATE CheckersGameLib catch sglib)
-target_link_libraries(CheckersTests PRIVATE ${CHECKERS_GTEST} catch sglib CheckersGameLib)
+target_link_libraries(CheckersTests PRIVATE ${CHECKERS_GTEST} CheckersGameLib)
+checkers_warnings(CheckersTests)
 target_compile_features(CheckersTests PRIVATE cxx_std_14) # required by googletest >= 1.13
 gtest_discover_tests(CheckersTests TEST_PREFIX "CheckersGame.")
 
 # The testApi program
 add_executable(CheckersApiTest CheckersApiTest.cpp)
-# target_link_libraries(CheckersApiTest PRIVATE catch sglib CheckersGameApi)
 target_link_libraries(CheckersApiTest PRIVATE ${CHECKERS_GTEST} CheckersGameApi)
+checkers_warnings(CheckersApiTest)
 target_compile_features(CheckersApiTest PRIVATE cxx_std_14)
 gtest_discover_tests(CheckersApiTest TEST_PREFIX "CheckersGameApi.")

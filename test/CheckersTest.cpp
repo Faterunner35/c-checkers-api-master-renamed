@@ -1,6 +1,4 @@
-#define CATCH_CONFIG_MAIN
 #include <CheckersGame.h>
-#include <sglib.h>
 #include <gtest/gtest.h>
 
 static bool compareBoards(const char board1[8][8], const char board2[8][8])

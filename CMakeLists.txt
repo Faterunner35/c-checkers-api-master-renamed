@@ -9,8 +9,15 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 include(CTest)
 enable_testing()
 
-add_subdirectory(thirdparty/catch)
-add_subdirectory(thirdparty/sglib)
+# Warnings for the project's own targets (not for the fetched googletest).
+function(checkers_warnings target)
+    if(MSVC)
+        target_compile_options(${target} PRIVATE /W4 /utf-8)
+    else()
+        target_compile_options(${target} PRIVATE -Wall -Wextra)
+    endif()
+endfunction()
+
 add_subdirectory(src)
 add_subdirectory(test)
 add_subdirectory(examples)

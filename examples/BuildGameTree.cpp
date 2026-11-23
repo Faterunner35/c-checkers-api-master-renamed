@@ -17,7 +17,7 @@ static void printBoardStatus(char status[8][8])
 	}
 }
 
-int main(int argc, char *argv[])
+int main()
 {
 	char status[8][8];
 

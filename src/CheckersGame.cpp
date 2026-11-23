@@ -65,7 +65,7 @@ void freeMoveList(MoveList moveList)
     if( list1 == NULL )
         return;
         
-	freeListMove(list1);
+    freeListMove(list1);
 }
 
 int getChildCountOfMoveTree(MoveTree moveTree)
@@ -129,7 +129,7 @@ bool isBlackPiece(const char checker)
 };
 
 //get checker status
-static const char getFinalStatus(const char checker, int finalPos[2])
+static char getFinalStatus(const char checker, int finalPos[2])
 {
     if (isBlackPiece(checker))
     {
@@ -154,7 +154,7 @@ static void setPieceByTypeAndPosition(char status[8][8], char type, const int po
 }
 
 //return piece by position
-const char getPieceFromPos(const char status[8][8], const int position[2])
+char getPieceFromPos(const char status[8][8], const int position[2])
 {
     return status[position[0]][position[1]];
 }
