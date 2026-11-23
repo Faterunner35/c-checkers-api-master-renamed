@@ -41,7 +41,7 @@ extern "C"
     bool        isBlackPiece(const char checker);
 
     //return piece by position
-    const char  getPieceFromPos(const char status[8][8], const int position[2]);
+    char getPieceFromPos(const char status[8][8], const int position[2]);
 
     //The function that finds all possible moves from current position for a checker
     void        findPossibleMoving(const char status[8][8], const int posStart[2], MoveList list);

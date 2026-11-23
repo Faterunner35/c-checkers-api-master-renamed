@@ -15,7 +15,6 @@ runtime.
 
 - Written by Aleksander Aksionau (GitHub: [Faterunner35](https://github.com/Faterunner35); `vttry` in the license is the same author).
 - MIT License, **Copyright (c) 2019 vttry** — see [LICENSE](LICENSE).
-- Third-party code in `thirdparty/` keeps its own license (see below).
 
 ## What the code does
 
@@ -89,14 +88,11 @@ examples/
 test/
   CheckersTest.cpp    GoogleTest tests for the low-level move generation
   CheckersApiTest.cpp GoogleTest tests for the public API
-thirdparty/
-  catch/   Catch v2.9.1 single header (Boost Software License 1.0, Two Blue Cubes Ltd.)
-  sglib/   SGLIB 1.0.4 header (Marian Vittek; free use of verbatim copies, see header)
+CMakeLists.txt, CMakePresets.json
 ```
 
-The tests do not use either third-party header. `test/CheckersTest.cpp`
-includes `sglib.h` but calls nothing from it, and Catch is bundled but no test
-includes it. The tests use GoogleTest (see below).
+The repository used to bundle Catch and SGLIB headers that no test or source
+file actually used; they were removed. The tests use GoogleTest (see below).
 
 ## Building and testing
 
@@ -109,7 +105,13 @@ ctest --test-dir build --output-on-failure
 ```
 
 With a multi-config generator such as Visual Studio, add `--config Release` to
-the build command and `-C Release` to the `ctest` command.
+the build command and `-C Release` to the `ctest` command. With the presets:
+`cmake --preset linux-release` (or `x64-release` on Windows), then
+`cmake --build --preset <name>` and `ctest --preset <name>`. Visual Studio can
+open the folder directly (*File → Open → Folder*).
+
+The project's own targets build with `-Wall -Wextra` (MSVC: `/W4`); GCC
+compiles them without warnings.
 
 The tests need GoogleTest. If CMake finds an installed copy (for example the
 `libgtest-dev` package), it uses that copy. Otherwise googletest v1.14.0 is
@@ -166,5 +168,4 @@ target_link_libraries(my_app PRIVATE CheckersGameApi)
 
 ## License
 
-MIT, see [LICENSE](LICENSE). The files in `thirdparty/` keep their own licenses,
-which are stated in their headers.
+MIT, see [LICENSE](LICENSE).
